@@ -235,3 +235,12 @@ function openPinShare(target){
 	window.open('https//www.pinterest.com/pin/create/button/?url='+ u +'&media=' + iu ,'sharer',windowFeatures);
 	return false;
 }
+
+function isTouchScreen(){
+	if ("ontouchstart" in window || navigator.msMaxTouchPoints)
+        {
+		return true;
+        } else {
+		return false;
+        }
+}
