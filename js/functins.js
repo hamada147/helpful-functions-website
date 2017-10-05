@@ -105,3 +105,61 @@ String.prototype.replaceAll = function(search, replacement) {
 	var target = this;
 	return target.replace(new RegExp(search, 'g'), replacement);
 };
+
+/**
+ * check a string if it is a hex color or not
+ */
+function isHexColor(color) {
+	return color.match(/#((\w{6})|(\w{3}))/);
+}
+
+/**
+ * check a string if it is a RGB color or not
+ */
+function isRGBColor(color) {
+	return color.match(/rgb\s?\(\s?\d+\s?,\s?\d+\s?,\s?\d+\s?\)/)
+}
+
+/**
+ * convert hex color to RGB color
+ */
+function hexToRGB(originalColor) {
+	var vals = originalColor.match(/\w+/)[0];
+	var retVal = {};
+	if (vals.length === 3) {
+		vals = vals[0] + vals[0] + vals[1] + vals[1] + vals[2] + vals[2];
+	}
+	retVal.red = hexToDec(vals.substr(0, 2));
+	retVal.green = hexToDec(vals.substr(2, 2));
+	retVal.blue = hexToDec(vals.substr(4, 2));
+	return retVal;
+}
+
+/**
+ * convert hex to decimal value
+ */
+function hexToDec(hexNum) {
+	return parseInt(hexNum, 16);
+}
+
+/**
+ * convert decimal to hex value
+ */
+function decToHex(decNum) {
+	return decNum.toString(16);
+}
+
+/**
+ * if color value is less then 0 set it to 0
+ * if color value is bigger than 255 set it to 255
+ * other then than that keep it as it is
+ */
+function clamp(val) {
+	if (val < 0) {
+		return 0;
+	}
+	if (val > 255) {
+		return 255;
+	}
+	return val;
+}
