@@ -232,6 +232,6 @@ function openPinShare(target){
 	//Allow for title and status bars.
 	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
 	var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
-	window.open('//www.pinterest.com/pin/create/button/?url='+ u +'&media=' + iu ,'sharer',windowFeatures);
+	window.open('https//www.pinterest.com/pin/create/button/?url='+ u +'&media=' + iu ,'sharer',windowFeatures);
 	return false;
 }
