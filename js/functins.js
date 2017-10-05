@@ -170,3 +170,68 @@ function clamp(val) {
 function is_touch_device() {
 	return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 }
+
+/**
+ * share on Facebook something (ex: article)
+ * the clicked element must have two things
+ * data-url: which contain the url that you are going to share
+ * data-title: the title of your share
+ */
+function openFbShare(target){
+	var link = jQuery(target);
+	var u = encodeURIComponent(link.attr('data-url'));
+	var t = encodeURIComponent(link.attr('data-title'));
+	var leftPosition, topPosition;
+	//Allow for borders.
+	var width = 626;
+	var height = 436;
+	leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	//Allow for title and status bars.
+	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+
+	window.open('https://www.facebook.com/sharer.php?u=' + u +'&[title]=' + t,'sharer',windowFeatures);
+	return false;
+}
+/**
+ * share on Twitter something (ex: article)
+ * the clicked element must have two things
+ * href: which contain the url that you are going to share
+ */
+function openTwShare(target){ 
+	var link = jQuery(target);
+	var url = link.attr('href');
+	var leftPosition, topPosition;
+	var width = 626;
+	var height = 436;
+	leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	//Allow for title and status bars.
+	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+	//url += '?msg=' + link.attr('data-msg');
+	window.open(url,'Twitter',windowFeatures);
+	return false;
+}
+
+/**
+ * share on Pinterest something (ex: article)
+ * the clicked element must have two things
+ * data-url: which contain the url that you are going to share
+ * data-imt: the image of your share
+ */
+function openPinShare(target){
+	var link = jQuery(target);
+	var u = encodeURIComponent(link.attr('data-url'));
+	var iu = encodeURIComponent(link.attr('data-img'));
+	//var t = encodeURIComponent(link.attr('data-title'));
+	var leftPosition, topPosition;
+	//Allow for borders.
+	var width = 750;
+	var height = 550;
+	leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	//Allow for title and status bars.
+	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+	window.open('//www.pinterest.com/pin/create/button/?url='+ u +'&media=' + iu ,'sharer',windowFeatures);
+	return false;
+}
