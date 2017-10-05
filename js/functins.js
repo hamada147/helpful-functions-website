@@ -163,3 +163,10 @@ function clamp(val) {
 	}
 	return val;
 }
+
+/**
+ * check if the device is a touch device or not
+ */
+function is_touch_device() {
+	return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+}
