@@ -236,6 +236,16 @@ function openPinShare(target){
 	return false;
 }
 
+/**
+ * share on Google+
+ * the clicked element must have one thing
+ * data-url:  which contain the url that you are going to share
+ */
+function openGplusg(target){
+	var url = jQuery(target).attr('data-url');
+	window.open('https://plus.google.com/share?url=' + encodeURIComponent(url), 'Share', 'target=_blank,width=500,height=380, left=0, top=100 ');
+}
+
 function isTouchScreen(){
 	if ("ontouchstart" in window || navigator.msMaxTouchPoints)
         {
