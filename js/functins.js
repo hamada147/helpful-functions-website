@@ -254,3 +254,28 @@ function isTouchScreen(){
 		return false;
         }
 }
+
+function fade_in(el) {
+	el.style.display = 'block';
+	el.style.opacity = 0;
+	var tick = function() {
+		el.style.opacity = +el.style.opacity + 0.01;
+		if (+el.style.opacity < 1) {
+			setTimeout(tick, 10);
+		}
+	};
+	tick();
+}
+
+function fade_out(el) {
+	el.style.opacity = 1;
+	var tick = function() {
+		el.style.opacity = +el.style.opacity - 0.01;
+		if (+el.style.opacity > 0.0) {
+			setTimeout(tick, 10);
+		} else {
+			el.style.display = 'none';
+		}
+	};
+	tick();
+}
