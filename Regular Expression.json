@@ -1,0 +1,6 @@
+{
+	"regex": {
+		"base64Image": "/data:image\/([a-zA-Z]*);base64,([^\"]*)/g",
+		"EgyptionMobileNumber": "/^((\+2)([0-9]{11}))|^(01)([0-9]{9})|^(2)([0-9]{11})/g"
+	}
+}
