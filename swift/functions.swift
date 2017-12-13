@@ -13,4 +13,21 @@ extension String {
         return Data(self.utf8).base64EncodedString()
     }
     
+    // string to hex
+    func StringToHex() -> String {
+        let hexString = self.data(using: .utf8)!.map{ String(format:"%02x", $0) }.joined()
+        return "0x" + hexString
+    }
+    
+    // hex to string
+    func HexToString() -> String {
+        let regex = try! NSRegularExpression(pattern: "(0x)?([0-9A-Fa-f]{2})", options: .caseInsensitive)
+        let textNS = self as NSString
+        let matchesArray = regex.matches(in: textNS as String, options: [], range: NSMakeRange(0, textNS.length))
+        let characters = matchesArray.map {
+            Character(UnicodeScalar(UInt32(textNS.substring(with: $0.range(at: 2)), radix: 16)!)!)
+        }
+        return String(characters)
+    }
+    
 }
