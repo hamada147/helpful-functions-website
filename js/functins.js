@@ -3,6 +3,14 @@ function main() {
 }
 
 /**
+ * adding a new function to the string API that generate a sentence where the first letter is a capital letter
+ * @return a sentense with a capital letter in the first world
+ */
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+/**
  * validate given email address
  * @var email: the given email address
  * @return true if valid
