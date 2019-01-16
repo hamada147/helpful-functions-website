@@ -42,4 +42,10 @@ public extension UIView {
             bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    // create border around the UIView with chosen colour and width with a default value of one
+    public func borderWith(color: UIColor, borderWidth width: CGFloat = 1) {
+        self.layer.borderWidth = width
+        self.layer.borderColor = color.cgColor
+    }
 }
